@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+  <div class="row">
+    <div class="Absolute-Center is-Responsive">
+      <h1 align="center">Details</h1>
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <form method="post">
+          <div class="form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input class="form-control" type="text" name='name' placeholder="name" value="<%=name%>" />          
+          </div>
+          <span style="color: red"><%= msg.msg1 %></span> 
+            <div class="form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>     
+            <input class="form-control" type="text" name='address' placeholder="address" value="<%=address%>" />   
+              
+          </div>
+          <span style="color: red"><%= msg.msg2 %></span> 
+          <div class="form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+            <input class="form-control" type="text" name='mobile' placeholder="mobile no" width="100%" value="<%=phone%>" />     
+          </div>
+          <span style="color: red"><%= msg.msg3 %></span> 
+          <div class="form-group">
+          	<input type="submit" name="" class="btn btn-success btn-block" value="Confirm">
+          </div>
+          <div class="form-group text-center">
+            <a href="http:/login/signup">back</a>
+          </div>
+        </form>        
+      </div>  
+    </div>    
+  </div>
+</div>
+</body>
+</html>

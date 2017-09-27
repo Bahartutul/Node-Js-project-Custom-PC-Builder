@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Processor</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	 <link rel="stylesheet" href="/css/bootstrap.min.css">
+	 <link rel="stylesheet" type="text/css" href="/css/style.css">
+	 <script src="/jquery.min.js"></script>
+
+	 <script>
+
+$(document).ready(function(){
+    $("body").on('click','i#add',function(){
+       var c=$("#qty").text();
+        $("#qty").text(++c);
+        $(this).attr("#qty").text(c);
+       $(this).attr("#val").val(c);
+    });
+});
+$(document).ready(function(){
+     $("body").on('click','i#del',function(){
+       var c=$("#qty").text();
+       if(c>1){
+       	 $("#qty").text(--c);
+         $(this).$("#val").val(c);///
+
+       }
+       
+    });
+});
+</script>
+
+
+</head>
+<body>
+	<nav class="navbar navbar-default">
+  <div class="container">
+
+  	
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      	<button class="dropbtn"><a href="/home">Home</a></button>
+      	<button class="dropbtn"><a href="/home/system">Build Your System </a></button>
+      	<div class="dropdown">
+  			<button class="dropbtn">Product</button>
+  			<div class="dropdown-content">
+    			<a href="../component/processor">Processor</a>
+    			<a href="../component/motherboard">Motherboard</a>
+   				<a href="../component/storage">Hard Disk</a>
+   				<a href="../component/memory">Memory</a>
+    			<a href="../component/case">Case</a>
+   				<a href="../component/powersupply">Power Supply</a>
+   				<a href="../component/videocard">Graphics Card</a>
+    			<a href="../component/casefan">CPU Cooler</a>
+   				<a href="../component/monitor">Monitor</a>
+   				<a href="../component/opticaldrive">Optical Drive</a>
+    			<a href="../component/speaker">Speaker</a>
+   				<a href="../component/mice">Mouse</a>
+   				<a href="../component/keyboard">Keyboard</a>
+ 			 </div>
+		</div>
+      	<button class="dropbtn"><a href="#">About</a></button>
+      	
+		
+		
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+        	<a href="/home/cart"><i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i> Shopping Cart
+        		 <span class="badge"><%= session.cart.totalQty %></span>
+        	</a>
+
+        </li>
+         <li><a href="<%= session.home.login %>"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> <%= session.home.user %></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+   
+</nav>
+<div class="container">
+	
+		<table class="table table-striped" width ="100%">
+
+				<tr align="center">
+					<td><label>Brand</label></td>
+					<td><label>Model</label></td>
+					<td><label>Configuration</label></td>
+					<td><label>Total Wattage</label></td>
+					<td><label> Frequency</label></td>
+					
+					<td><label>Price</label></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<% for(var i = 0; i < speakerList.length; i++) { %>
+				<form method="post">
+				<tr align="center">
+					<input type="hidden" name="id" value="<%= speakerList[i].id %>">
+					<td><%= speakerList[i].brand %></td>
+					<td><label><a href=""><%= speakerList[i].model %></a></label></td>
+					<input type="hidden" name="speaker" value="<%= speakerList[i].model %>">
+					<td><%= speakerList[i].configuration %></td>
+					<td><%= speakerList[i].totalwattage %></td>
+					<td><%= speakerList[i].frequency %></td>
+					
+									
+				
+				
+					<td><label><%= speakerList[i].price %></label>
+						<input type="hidden" name="price" value="<%= speakerList[i].price %>">
+					</td>
+					<td ><input type="submit" name="add" value="Add"  class="btn btn-info"> </td>
+					<td><a href="/home/add-to-cart/<%= speakerList[i].id%>/speakers" class="btn btn-default pull-right" role="button">Add to cart</a></td>
+				</tr>
+				</form>
+				<% } %>
+				
+			</table>
+	
+</div>
+
+
+
+
+
+</body>
+</html>

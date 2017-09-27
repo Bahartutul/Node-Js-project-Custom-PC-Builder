@@ -1,0 +1,58 @@
+router.get('/home/add-to-cart/:id', function(req, res){
+	var productId = req.params.id;
+	var array = [];
+	
+	var cart = {
+			
+	
+			id: req.session.cart.id,
+			item: req.session.cart.item,
+			price: req.session.cart.price,
+			qty:req.session.cart.qty,
+			totalQty: req.session.cart.totalQty,	
+			totalPrice: req.session.cart.totalPrice
+	};
+	
+	
+	//var cart = new Cart(req.session.cart ? req.session.cart:{});
+	componentModel.get(productId, function(result){
+			if(!cart.id){
+				cart.totalPrice =0;
+			}
+
+			cart.id=result.id;
+			cart.item= result.model;
+			cart.price= result.price;
+			cart.qty = 1;
+			cart.totalQty=cart.totalQty+1; 	
+			cart.totalPrice+=cart.price;
+		
+		//req.session.cart = cart;
+
+			array.push(cart.id);
+    		array.push(cart.item);
+    		array.push(cart.price);
+    		array.push(cart.qty);
+    		array.push(cart.totalQty);
+    		array.push(cart.totalPrice);
+
+			req.session.cart = cart;
+			req.session.array = array;
+    	
+		res.redirect('/home');
+	});
+	
+
+});
+
+router.get('/home/cart', function(req, res){
+
+	if(!req.session.cart){
+ 		return res.render('cart/cartView', {products:null});
+ 	}
+	//var cart = new Cart(req.session.cart); 
+	var products = req.session.cart;
+	console.log(req.session.cart);
+	res.render('cart/cartView', {products: products } );
+
+});

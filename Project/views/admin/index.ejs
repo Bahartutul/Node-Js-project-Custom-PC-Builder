@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	 <link rel="stylesheet" href="/css/bootstrap.min.css">
+	 <link rel="stylesheet" type="text/css" href="/css/admin.css">
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+			MENU
+			</button>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="http:/admin">
+				Administrator
+			</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
+			
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/home" target="_blank">Visit Site</a></li>
+				 <li><a href="<%= session.home.login %>"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> <%= session.home.user %></a></li>
+				 <li><a href="http:/login/changepass"><i class="glyphicon glyphicon-edit" aria-hidden="true"></i> change password</a></li>
+				 <li><a href="http:/remove/logout"><i class="glyphicon glyphicon-log-out" aria-hidden="true"></i> logout</a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>  	<div class="container-fluid main-container">
+  		<div class="col-md-2 sidebar">
+  			<div class="row">
+	<!-- uncomment code for absolute positioning tweek see top comment in css -->
+	<div class="absolute-wrapper"> </div>
+	<!-- Menu -->
+	<div class="side-menu">
+		<nav class="navbar navbar-default" role="navigation">
+			<!-- Main Menu -->
+			<div class="side-menu-container">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/admin"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+					<li><a href="/admin/products"><span class="glyphicon glyphicon-list-alt"></span> Products</a></li>
+					<li><a href="/admin/report"><span class="glyphicon glyphicon-cloud"></span> Report </a></li>
+					<li><a href="/admin/topsell"><span class="glyphicon glyphicon-cloud"></span> Top Selling Product </a></li>
+
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</nav>
+
+	</div>
+</div>  		</div>
+  		<div class="col-md-10 content">
+  			  <div class="panel panel-default">
+	<div class="panel-heading">
+		Dashboard
+	</div>
+	<div class="panel-body">
+		<table class="table table-striped" width ="100%">
+			<tr>
+				<td>Order No</td>
+				<td>Ordered Item</td>
+				<td>Order Date</td>
+				<td>Status</td>
+				<td>Ordered By</td>
+				<td>Address</td>
+				<td>Contact No</td>
+				<td></td>
+			</tr>
+			<% for(var i = 0; i < data.length; i++) { %>                                   
+			<tr>
+				<td><%= data[i].orderNumber %></td>
+				<td><%= data[i].item %></td>
+				<td><%= data[i].date %></td>
+				<td><%= data[i].status %></td>
+				<td><%= data[i].user %></td>
+				<td><%= data[i].address %></td>
+				<td><%= data[i].phone %></td>
+				<td><a href="/admin/details/<%= data[i].itemID%>" class="btn btn-primary">Detalis</a></td>
+			</tr>
+			   <% } %>
+		</table>
+	</div>
+</div>
+  		</div>
+
+  		
+  		<footer class="pull-left footer">
+  			<p class="col-md-12">
+  				<hr class="divider">
+  				Copyright &COPY; 2017 <a href="">ATP3</a>
+  			</p>
+  		</footer>
+  	</div>
+</body>
+</html>

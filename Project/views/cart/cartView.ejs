@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cart</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	 <link rel="stylesheet" href="/css/bootstrap.min.css">
+	 <link rel="stylesheet" type="text/css" href="/css/style.css">
+	 
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container">
+
+  	
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      	<button class="dropbtn"><a href="/home">Home</a></button>
+      	<button class="dropbtn"><a href="/home/system">Build Your System </a></button>
+      	<div class="dropdown">
+  			<button class="dropbtn">Product</button>
+  			<div class="dropdown-content">
+    			<a href="../component/processor">Processor</a>
+    			<a href="../component/motherboard">Motherboard</a>
+   				<a href="../component/storage">Hard Disk</a>
+   				<a href="../component/memory">Memory</a>
+    			<a href="../component/case">Case</a>
+   				<a href="../component/powersupply">Power Supply</a>
+   				<a href="../component/videocard">Graphics Card</a>
+    			<a href="../component/casefan">CPU Cooler</a>
+   				<a href="../component/monitor">Monitor</a>
+   				<a href="../component/opticaldrive">Optical Drive</a>
+    			<a href="../component/speaker">Speaker</a>
+   				<a href="../component/mice">Mouse</a>
+   				<a href="../component/keyboard">Keyboard</a>
+ 			 </div>
+		</div>
+      	<button class="dropbtn"><a href="#">About</a></button>
+      	
+		
+		
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+        	<a href="/home/cart"><i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i> Shopping Cart
+        		 <span class="badge"><%= session.cart.totalQty %></span>
+        	</a>
+
+        </li>
+         <li><a href="<%= session.home.login %>"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> <%= session.home.user %></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+   
+</nav>
+<div class="container">
+
+	<div class="row">
+		<div class="col-sm-6 col-md-6">
+		<% for(var i = 0; i < products.length; i++) { %>
+			<ul class="list-group-item">
+				<span class="badge"><%= products[i].quantity %> </span>
+				<strong><%= products[i].item %></strong>
+				<span class="label label-success">৳<%= products[i].price %></span>
+			    
+			</ul>
+
+			<% } %>
+		</div>
+	</div>
+	
+
+	<div class="row">
+		<div class="col-sm-6 col-md-6">
+			<strong>Total:</strong>
+			<%= totalPrice %>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-sm-6 col-md-6">
+			<a href="/home/order" class="btn btn-success" type="button">Checkout</a>
+			
+		</div>
+	</div>
+	
+	
+	
+	<div class="row">
+		<div class="col-sm-6 col-md-6">
+			<h2><%= products.message %></h2>
+		</div>
+	</div>
+	
+</div>
+</body>
+</html>

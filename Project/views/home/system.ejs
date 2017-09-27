@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Build System</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	 <link rel="stylesheet" href="/css/bootstrap.min.css">
+	 <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+
+
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container">
+
+  	
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      	<button class="dropbtn"><a href="/home">Home</a></button>
+      	<button class="dropbtn"><a href="/home/system">Build Your System </a></button>
+      	<div class="dropdown">
+  			<button class="dropbtn">Product</button>
+  			<div class="dropdown-content">
+    			<a href="../component/processor">Processor</a>
+    			<a href="../component/motherboard">Motherboard</a>
+   				<a href="../component/storage">Hard Disk</a>
+   				<a href="../component/memory">Memory</a>
+    			<a href="../component/case">Case</a>
+   				<a href="../component/powersupply">Power Supply</a>
+   				<a href="../component/videocard">Graphics Card</a>
+    			<a href="../component/casefan">CPU Cooler</a>
+   				<a href="../component/monitor">Monitor</a>
+   				<a href="../component/opticaldrive">Optical Drive</a>
+    			<a href="../component/speaker">Speaker</a>
+   				<a href="../component/mice">Mouse</a>
+   				<a href="../component/keyboard">Keyboard</a>
+ 			 </div>
+		</div>
+      	<button class="dropbtn"><a href="#">About</a></button>
+      	
+		
+		
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+        	<a href="/home/cart"><i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i> Shopping Cart
+        		 <span class="badge"><%= session.cart.totalQty %></span>
+        	</a>
+
+        </li>
+         <li><a href="<%= session.home.login %>"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> <%= session.home.user %></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+   
+</nav>
+<div class="container">
+	<form>
+		<table class="table table-striped" width ="100%" align="center">
+				<tr align="center">
+					<th>Component</th>
+					<th>Selection</th>
+					<th>Price</th>
+					<th></th>
+
+				</tr>
+				<tr>
+					<td><%=data.cpu %></td>
+					<input type="hidden" name="type" value="><%=data.type %>">
+					<td><a href="../component/processor"><label><%= data.cmodel %></label></a></td>
+					
+					<td><%= data.cprice %></td>
+					<td><a href="/remove/cpu"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></td>
+				</tr>
+				<tr>
+					<td><%=data.mobo %></td>
+					<input type="hidden" name="type" value="><%=data.type %>">
+					<td><a href="../component/motherboard"><label><%= data.mmodel %></label></a></td>
+					
+					<td><%= data.mprice %></td>
+					<td><a href="/remove/motherboard"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></td>
+				</tr>
+				<tr>
+					<td><%=data.strg %></td>
+					<input type="hidden" name="type" value="><%=data.type %>">
+					<td><a href="../component/storage"><label><%= data.smodel %></label></a></td>
+					
+					<td><%= data.sprice %></td>
+					<td><a href="/remove/storage"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></td>
+				</tr>
+					<tr>
+					<td><%=data.ram %></td>
+					<input type="hidden" name="type" value="><%=data.type %>">
+					<td><a href="../component/memory"><label><%= data.rmodel %></label></a></td>
+					
+					<td><%= data.rprice %></td>
+					<td><a href="/remove/memory"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></td>
+				</tr>
+					<tr>
+					<td><%=data.gpu %></td>
+					<input type="hidden" name="type" value="><%=data.type %>">
+					<td><a href="../component/videocard"><label><%= data.gmodel %></label></a></td>
+					
+					<td><%= data.gprice %></td>
+					<td><a href="/remove/gpu"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></td>
+				</tr>
+					<tr>
+					<td><%=data.psu %></td>
+					<input type="hidden" name="type" value="><%=data.type %>">
+					<td><a href="../component/powersupply"><label><%= data.pmodel %></label></a></td>
+					
+					<td><%= data.pprice %></td>
+					<td><a href="/remove/psu"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></td>
+				</tr>
+					<tr>
+					<td><%=data.spkr %></td>
+					<input type="hidden" name="type" value="><%=data.type %>">
+					<td><a href="../component/speaker"><label><%= data.spkrmodel %></label></a></td>
+					
+					<td><%= data.spkrprice %></td>
+					<td><a href="/remove/speaker"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></td>
+				</tr>
+					<tr>
+					<td><%=data.od %></td>
+					<input type="hidden" name="type" value="><%=data.type %>">
+					<td><a href="../component/opticaldrive"><label><%= data.odmodel %></label></a></td>
+					
+					<td><%= data.odprice %></td>
+					<td><a href="/remove/opticaldrive"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></td>
+				</tr>
+					<tr>
+					<td><%=data.mnt %></td>
+					<input type="hidden" name="type" value="><%=data.type %>">
+					<td><a href="../component/monitor"><label><%= data.mntmodel %></label></a></td>
+					
+					<td><%= data.mntprice %></td>
+					<td><a href="/remove/monitor"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></td>
+				</tr>
+					<tr>
+					<td><%=data.case %></td>
+					<input type="hidden" name="type" value="><%=data.type %>">
+					<td><a href="../component/case"><label><%= data.camodel %></label></a></td>
+					
+					<td><%= data.caprice %></td>
+					<td><a href="/remove/case"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></td>
+				</tr>
+					<tr>
+					<td><%=data.cf %></td>
+					<input type="hidden" name="type" value="><%=data.type %>">
+					<td><a href="../component/casefan"><label><%= data.cfmodel %></label></a></td>
+					
+					<td><%= data.cfprice %></td>
+					<td><a href="/remove/casefan"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></td>
+				</tr>
+					<tr>
+					<td><%=data.mice %></td>
+					<input type="hidden" name="type" value="><%=data.type %>">
+					<td><a href="../component/mice"><label><%= data.micemodel %></label></a></td>
+					
+					<td><%= data.miceprice %></td>
+					<td><a href="/remove/mice"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></td>
+				</tr>
+					<tr>
+					<td><%=data.kb %></td>
+					<input type="hidden" name="type" value="><%=data.type %>">
+					<td><a href="../component/keyboard"><label><%= data.kmodel %></label></a></td>
+					
+					<td><%= data.kprice %></td>
+					<td><a href="/remove/keyboard"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></td>
+				</tr>
+		</table>
+	</form>	
+</div>
+
+	<div class="row">
+		<div class="col-sm-6 col-md-4">
+		
+			
+		
+		</div>
+	</div>
+	
+
+
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
